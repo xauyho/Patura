@@ -1,0 +1,99 @@
+using System;
+using System.Collections.Generic;
+
+namespace Patura
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Random r = new Random();
+            
+            Console.WriteLine("\n");
+            Console.WriteLine("Patura || Planet Name Generator ");
+            Console.WriteLine("by xauyho");
+            Console.WriteLine("\n");
+            
+            GenerateName();   
+        }
+        
+        static void GenerateName(){
+            Console.WriteLine("Enter how many syllables: ");
+            Console.WriteLine("(Please note: for a suitably pronouncable name, stick with 2 - 5 syllables");
+            string userStrInput = Console.ReadLine();
+            
+            int rInt = Int32.Parse(userStrInput);
+            var planet = "";
+            
+            for (var i = 0; i < rInt; i++)
+            {
+                Random able = new Random();
+                
+                var syll = new List<string>
+                {
+                    "bo",
+                    "ba",
+                    "bu",
+                    "ko",
+                    "ka",
+                    "ku",
+                    "to",
+                    "tu",
+                    "ta",
+                    "ti",
+                    "ra",
+                    "ru",
+                    "ro",
+                    "go",
+                    "ga",
+                    "so",
+                    "sa",
+                    "po",
+                    "pa",
+                    "la",
+                    "li",
+                    "lu",
+                    "do",
+                    "da",
+                    "no",
+                    "na",
+                    "mo",
+                    "pok",
+                    "pak",
+                    "bon",
+                    "ban",
+                    "ron",
+                    "ran",
+                    "ram"
+                };
+                int index = able.Next(syll.Count);
+                
+                planet += syll[index];
+                
+                Console.WriteLine(syll[index]);            
+            }
+            Console.WriteLine("\nYour new planet name is: " + planet);
+            
+            EndOrContinue();
+        }
+        
+        static void EndOrContinue()
+        {
+            Console.WriteLine("\nWould you like to run again? [Y/N]: ");
+            string yn = Console.ReadLine();
+            
+            if (yn == "Y")
+            {
+                Console.WriteLine("Clearing the screen");
+                Console.Clear();
+                GenerateName();
+            }
+            else if (yn == "N")
+            {
+                Console.WriteLine("Clearing the screen");
+                Console.Clear();
+                System.Environment.Exit(0);
+            }
+        }
+    }
+}
